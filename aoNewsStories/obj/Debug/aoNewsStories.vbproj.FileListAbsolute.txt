@@ -1,0 +1,9 @@
+C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\bin\Debug\aoNewsStories.dll
+C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\bin\Debug\aoNewsStories.pdb
+C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\bin\Debug\aoNewsStories.xml
+C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\bin\Debug\CPBase.dll
+C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\Resources.resources
+C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.vbproj.GenerateResource.Cache
+C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.dll
+C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.xml
+C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.pdb
