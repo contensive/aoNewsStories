@@ -241,8 +241,6 @@ Namespace Contensive.Addons.aoNewsStorys
                         tmpHtml &= blockLayout.GetHtml
                         '
 
-
-
                     End If
                 End If
 
