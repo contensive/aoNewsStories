@@ -45,9 +45,9 @@ Namespace Contensive.Addons.aoNewsStorys
                 Dim blockLayout As CPBlockBaseClass = CP.BlockNew
                 Dim tmpHtml As String = ""
                 Dim storyCnt As Integer = 0
-                Dim mydate As Date = Today
-                Dim myMonth As String = mydate.ToString("MMMM")
-                Dim Myday As Integer = mydate.Day
+                Dim todayDate As Date = Today
+                Dim todayMonthString As String = todayDate.ToString("MMMM")
+                Dim todayDay As Integer = todayDate.Day
                 Dim minDate As Date = New Date(2000, 6, 9)
                 Dim storyID As Integer = CP.Doc.GetInteger("newsStoryId")
                 Dim histCount As Integer = 0
@@ -92,11 +92,11 @@ Namespace Contensive.Addons.aoNewsStorys
                                 blockLayout.SetOuter("#ndate", "<div class=""news-date"" id=""ndate"">" & storyDate & "</div>")
                             End If
                             If storyDate.ToString <> "" Then
-                                myMonth = storyDate.ToString("MMMM")
-                                Myday = storyDate.Day
+                                todayMonthString = storyDate.ToString("MMMM")
+                                todayDay = storyDate.Day
                                 '
-                                blockLayout.SetInner(".art-mo", myMonth)
-                                blockLayout.SetInner(".art-da", Myday)
+                                blockLayout.SetInner(".art-mo", todayMonthString)
+                                blockLayout.SetInner(".art-da", todayDay)
 
                             End If
 
