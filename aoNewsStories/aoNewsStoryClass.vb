@@ -110,7 +110,7 @@ Namespace Contensive.Addons.aoNewsStorys
                             'Else
                             '    blockLayout.SetOuter("#cssTitle", "<a target=""_blank"" href=""" & link & """ id=""cssTitle"">" & header & "</a>")
                             'End If
-                            blockLayout.SetInner(".newsCoverListOverview", "<p>" & breif & "</p>")
+                            blockLayout.SetInner(".newsCoverListOverview", "<p style=""padding-left:10px;"">" & breif & "</p>")
                             ' blockLayout.SetInner("#cssText", breif)
                             'If breif = "" And link <> "" Then
 
@@ -207,7 +207,7 @@ Namespace Contensive.Addons.aoNewsStorys
                         storyID = cs.GetInteger("ID")
                         myDownload = cs.GetText("download")
                         '
-                        blockLayout.Load(layout.GetOuter(".latestNewsUL"))
+                        blockLayout.Load(layout.GetInner(".latestNewsUL"))
 
                         If image = "" Then
                             blockLayout.SetOuter("#cssThumImg", image)
@@ -215,7 +215,7 @@ Namespace Contensive.Addons.aoNewsStorys
                             blockLayout.SetInner("#cssThumImg", "<img src=""" & CP.Site.FilePath & image & """ alt="""" />")
                         End If
                         '
-                        blockLayout.SetOuter("#ltag", header)
+                        blockLayout.SetOuter("#ltag", "<H2>" & header & "</h2></br>")
                         '
                         If myDownload = "" Then
                             blockLayout.SetInner(".newsCoverListOverview", story)
@@ -233,9 +233,9 @@ Namespace Contensive.Addons.aoNewsStorys
                         End If
                         '
                         If storyDate <= Date.MinValue Then
-                            blockLayout.SetOuter("ndate", "")
+                            blockLayout.SetOuter("#ndate", "")
                         Else
-                            blockLayout.SetInner("ndate", storyDate.ToShortDateString)
+                            blockLayout.SetInner("#ndate", "<div class=""news-date"" id=""ndate"">" & storyDate.ToShortDateString & "</div>")
                         End If
                         qs = CP.Doc.RefreshQueryString
                         link = "?" & CP.Utils.ModifyQueryString(qs, "newsStoryId", "")
