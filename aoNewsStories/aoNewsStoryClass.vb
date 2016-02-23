@@ -189,9 +189,7 @@ Namespace Contensive.Addons.aoNewsStorys
                 Dim histCount As Integer = 0
                 Dim exitLoop As Boolean = False
                 Dim cs As CPCSBaseClass = CP.CSNew()
-
-                '
-
+                Dim qs As String
                 '
 
                 layout.OpenLayout("aoNewsStory news story Page News Story List")
@@ -233,7 +231,12 @@ Namespace Contensive.Addons.aoNewsStorys
                         Else
                             blockLayout.SetInner("#articleURL", "<a target=""_blank"" href=""" & link & """>Read More</a>")
                         End If
-                        Dim qs As String
+                        '
+                        If storyDate <= Date.MinValue Then
+                            blockLayout.SetOuter("ndate", "")
+                        Else
+                            blockLayout.SetInner("ndate", storyDate.ToShortDateString)
+                        End If
                         qs = CP.Doc.RefreshQueryString
                         link = "?" & CP.Utils.ModifyQueryString(qs, "newsStoryId", "")
                         blockLayout.SetOuter("#articleRet", "<a href=""" & link & """>Back to news stories</a>")

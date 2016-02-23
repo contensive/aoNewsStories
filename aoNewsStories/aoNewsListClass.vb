@@ -68,15 +68,7 @@ Namespace Contensive.Addons.aoNewsStorys
                                 blockLayout.SetInner(".art-mo", myMonth)
                                 blockLayout.SetInner(".art-da", Myday)
                             End If
-                            If brief = "" And link <> "" Then
-                                blockLayout.SetOuter(".art-title", " <a target=""_blank"" href=""" & link & """ >" & brief & "</a>")
-                            Else
-                                Dim qs As String
-                                qs = CP.Doc.RefreshQueryString
-                                link = "?" & CP.Utils.ModifyQueryString(qs, "newsStoryId", storyID)
-                                blockLayout.SetOuter(".art-title", " <a href=""/News-Stories?newsId=" & link & """ >" & brief & "</a>")
-                            End If
-
+							blockLayout.SetOuter(".art-title", brief)
                             '
                             repeaterListHtml &= blockLayout.GetHtml
                             '
