@@ -68,7 +68,7 @@ Namespace Contensive.Addons.aoNewsStorys
                                 blockLayout.SetInner(".art-mo", myMonth)
                                 blockLayout.SetInner(".art-da", Myday)
                             End If
-                            blockLayout.SetOuter(".art-title", "<p style=""padding-left:10px;"">" & brief & "</br>")
+                            blockLayout.SetInner(".art-title", "<p style=""padding-left:10px;"">" & brief & "</br>")
                             '
                             repeaterListHtml &= blockLayout.GetHtml
                             '

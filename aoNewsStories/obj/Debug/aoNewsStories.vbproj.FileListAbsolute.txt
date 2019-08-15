@@ -6,4 +6,4 @@ C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsS
 C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.dll
 C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.xml
 C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.pdb
-C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.vbprojResolveAssemblyReference.cache
+C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.vbproj.CoreCompileInputs.cache
