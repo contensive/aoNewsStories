@@ -1,0 +1,19 @@
+﻿<div>
+	<ul class="latestNewsUL">
+		{{#newsList}}
+		<li>
+			<div class="oneArticle">
+				<div class="art-date">
+					<div class="art-cal">
+						<div class="art-mo">{{month}}</div>
+						<div class="art-da">{{day}}</div>
+					</div>
+				</div>
+					
+				<p style=""padding-left:10px;"">{{title}}</p>
+					
+			</div>
+		</li>
+		{{^newsList}}
+	</ul>        
+</div>

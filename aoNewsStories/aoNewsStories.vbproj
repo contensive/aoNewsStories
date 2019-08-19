@@ -7,8 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F2E3B972-F58B-480A-B8AC-DF0407C8494B}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace>Contensive.Addons.aoNewsStories</RootNamespace>
     <AssemblyName>aoNewsStories</AssemblyName>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
@@ -54,7 +53,10 @@
   <ItemGroup>
     <Reference Include="CPBase, Version=4.1.2.0, Culture=neutral, PublicKeyToken=10b3c53389b845fb, processorArchitecture=MSIL">
       <HintPath>packages\Contensive.CPBaseClass.5.0.6\lib\net461\CPBase.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nustache.Core, Version=1.16.0.10, Culture=neutral, PublicKeyToken=efd6f3d8f76ecd9f, processorArchitecture=MSIL">
+      <HintPath>packages\Nustache.1.16.0.10\lib\net20\Nustache.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -69,7 +71,15 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="aoNewsListClass.vb" />
+    <Compile Include="Controllers\genericController.vb" />
+    <Compile Include="Controllers\InstanceIdController.vb" />
+    <Compile Include="Models\Db\baseModel.vb" />
+    <Compile Include="Models\Db\DbBaseModel.vb" />
+    <Compile Include="Models\Db\DesignBlockFontModel.vb" />
+    <Compile Include="Models\Db\DesignBlockThemeModel.vb" />
+    <Compile Include="Models\Db\PeopleModel.vb" />
+    <Compile Include="Models\Db\_blankModel.vb" />
+    <Compile Include="Views\aoNewsListClass.vb" />
     <Compile Include="common.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -86,7 +96,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="aoNewsStoryClass.vb" />
+    <Compile Include="Views\aoNewsStoryClass.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -107,6 +117,14 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\View\" />
+    <Folder Include="Views\AddonList\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\Db\modelData.txt" />
+    <Content Include="Resources\NewsStoryHomePageNewsList.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

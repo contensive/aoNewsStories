@@ -2,9 +2,12 @@
 Imports System
 Imports System.Collections.Generic
 Imports System.Text
+Imports Contensive.Addons.aoNewsStories.Controllers
+Imports Contensive.Addons.aoNewsStories.Models.Db
+Imports Contensive.Addons.aoNewsStories.Models.View
 Imports Contensive.BaseClasses
 
-Namespace Contensive.Addons.aoNewsStorys
+Namespace Views
 
     Public Class aoNewsStoryClass
         Inherits AddonBaseClass

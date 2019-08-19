@@ -1,13 +1,14 @@
 ﻿
 Imports System.Exception
+Imports Contensive.BaseClasses
 
 Namespace Contensive.Addons
 
     Public Class commonClass
-        Public Function isInGroup(ByVal cp As Contensive.BaseClasses.CPBaseClass, ByVal groupName As String, ByVal userId As Long) As Boolean
+        Public Function isInGroup(ByVal cp As CPBaseClass, ByVal groupName As String, ByVal userId As Long) As Boolean
             '
             Dim groupId As Integer
-            Dim cs As Contensive.BaseClasses.CPCSBaseClass
+            Dim cs As CPCSBaseClass
             Dim sql As String = ""
             '
             groupId = cp.Group.GetId(groupName)

@@ -39,7 +39,7 @@ Namespace My.Resources
         Friend ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
-                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Resources", GetType(Resources).Assembly)
+                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Contensive.Addons.aoNewsStories.Resources", GetType(Resources).Assembly)
                     resourceMan = temp
                 End If
                 Return resourceMan
@@ -58,6 +58,33 @@ Namespace My.Resources
             Set
                 resourceCulture = value
             End Set
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;div&gt;
+        '''	&lt;ul class=&quot;latestNewsUL&quot;&gt;
+        '''		{{#newsList}}
+        '''		&lt;li&gt;
+        '''			&lt;div class=&quot;oneArticle&quot;&gt;
+        '''				&lt;div class=&quot;art-date&quot;&gt;
+        '''					&lt;div class=&quot;art-cal&quot;&gt;
+        '''						&lt;div class=&quot;art-mo&quot;&gt;{{month}}&lt;/div&gt;
+        '''						&lt;div class=&quot;art-da&quot;&gt;{{day}}&lt;/div&gt;
+        '''					&lt;/div&gt;
+        '''				&lt;/div&gt;
+        '''					
+        '''				&lt;p style=&quot;&quot;padding-left:10px;&quot;&quot;&gt;{{title}}&lt;/p&gt;
+        '''					
+        '''			&lt;/div&gt;
+        '''		&lt;/li&gt;
+        '''		{{^newsList}}
+        '''	&lt;/ul&gt;        
+        '''&lt;/div&gt;.
+        '''</summary>
+        Friend ReadOnly Property NewsStoryHomePageNewsList() As String
+            Get
+                Return ResourceManager.GetString("NewsStoryHomePageNewsList", resourceCulture)
+            End Get
         End Property
     End Module
 End Namespace

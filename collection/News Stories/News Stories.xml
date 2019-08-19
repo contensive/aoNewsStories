@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="windows-1252"?>
-<Collection name="News Stories" guid="{D3AAE9C9-CFBB-493D-8AB9-75C07AB306C2}" system="No" updatable="Yes" blockNavigatorNode="No">
+<Collection name="News Stories" guid="{d3aae9c9-cfbb-493d-8ab9-75c07ab306c2}" system="No" updatable="No" blockNavigatorNode="No" onInstallAddonGuid="">
 	<HelpLink>http://wiki.kmacloud.net/index.php?title=News_Stories</HelpLink>
 	<Help></Help>
-	<Addon name="News Stories Page" guid="{51A13278-C95B-41B7-A2FC-0384B8A712D1}" type="Add-on">
+	<Addon name="model data" guid="{5db4d199-f2ce-4259-b8ec-33007e72ee33}" type="Add-on">
 		<Copy></Copy>
 		<CopyText></CopyText>
 		<ActiveXProgramID></ActiveXProgramID>
-		<DotNetClass><![CDATA[Contensive.Addons.aoNewsStorys.aoNewsStoryClass]]></DotNetClass>
+		<DotNetClass></DotNetClass>
 		<ArgumentList></ArgumentList>
 		<AsAjax>No</AsAjax>
 		<Filter>No</Filter>
 		<Help></Help>
 		<HelpLink></HelpLink>
-		<Icon Link="" width="0" height="0" sprites="0" />
+		<Icon Link="" width="50" height="50" sprites="0" />
 		<InIframe>No</InIframe>
-		<BlockEditTools>No</BlockEditTools>
+		<BlockEditTools>Yes</BlockEditTools>
 		<FormXML></FormXML>
 		<IsInline>No</IsInline>
-		<JavascriptOnLoad></JavascriptOnLoad>
 		<JavascriptInHead></JavascriptInHead>
-		<JavascriptBodyEnd></JavascriptBodyEnd>
-		<MetaDescription></MetaDescription>
-		<OtherHeadTags></OtherHeadTags>
+		<javascriptForceHead>No</javascriptForceHead>
+		<JSHeadScriptSrc></JSHeadScriptSrc>
+		<!-- deprecated --><JSBodyScriptSrc></JSBodyScriptSrc>
+		<!-- deprecated --><JavascriptBodyEnd></JavascriptBodyEnd>
+		<!-- deprecated --><JavascriptOnLoad></JavascriptOnLoad>
 		<Content>No</Content>
 		<Template>No</Template>
 		<Email>No</Email>
@@ -31,42 +32,107 @@
 		<OnBodyStart>No</OnBodyStart>
 		<OnBodyEnd>No</OnBodyEnd>
 		<RemoteMethod>No</RemoteMethod>
+		<Diagnostic>No</Diagnostic>
+		<Diagnostic>No</Diagnostic>
 		<ProcessRunOnce>No</ProcessRunOnce>
 		<ProcessInterval>0</ProcessInterval>
+		<MetaDescription></MetaDescription>
+		<OtherHeadTags></OtherHeadTags>
 		<PageTitle></PageTitle>
 		<RemoteAssetLink></RemoteAssetLink>
-		<Styles><![CDATA[
-.oneArticle a {
-    color: #00a0d2;
-}]]></Styles>
-		<Scripting Language="" EntryPoint="" Timeout="5000"/>
+		<Styles></Styles>
+		<styleslinkhref></styleslinkhref>
+		<Scripting Language="VBScript" EntryPoint="" Timeout="5000">
+			<Code><![CDATA[function m
+	dim cs,c,modelName
+	set cs = cp.csNew()
+	if ( cs.open( "content" )) then
+		do
+			modelName = replace( cs.getText( "name" ), " ", "")
+			modelName = replace( modelName, "-", "")
+			if ( right( modelName,1 ) = "s" ) then
+				modelName = left( modelName, len( modelName )-1)
+			end if
+			modelName = modelName & "Model"
+			c = c & vbcrlf & vbcrlf & "---------------------------------------------"
+			c = c & vbcrlf & "Model Name: " & modelName
+			c = c & vbcrlf & "Content Name: " & cs.getText( "name" )
+			c = c & vbcrlf & "Table Name: " & cp.content.getRecordName( "tables", cs.getInteger( "ContentTableID" ))
+			c = c & vbcrlf & getModelFields( cs.getInteger( "id" ))
+			cs.goNext()
+		loop while cs.ok
+	end if
+	cs.close()
+	call cp.file.saveVirtual( "Models.txt", c )
+	m = "<a href=""" & cp.site.filePath & "Models.txt"">Models.txt</a>"
+end function
+
+function getModelFields( contentId )
+	dim cs, t, p, l, s,d, fieldName
+	set cs = cp.csNew()
+	if ( cs.open( "content fields", "contentid=" & contentid, "name" )) then
+	  do
+		fieldName = cs.getText( "name" )
+		select case lcase( fieldName )
+			case "id"
+				p = p & ""
+			case "contentcategoryid","contentcontrolid","modifiedby","createdby","createkey","editarchive","editsourceid","editblank"
+				p = p & ""
+			case "modifieddate","dateadded"
+				p = p & ""
+			case "name","sortorder","ccguid"
+				p = p & ""
+			case "active"
+				p = p & ""
+			case else
+				select case cs.getInteger( "type" )
+				  case 13: 
+					' autoincrement (identity)
+					p = p & vbcrlf & "public property " & fieldName & " as Integer"
+				  case 1,7,15: 
+					p = p & vbcrlf & "public property " & fieldName & " as Integer"
+				  case 4:
+					p = p & vbcrlf & "public property " & fieldName & " as Boolean"
+				  case 2,3,6,10,11,16,17,18,19,20,21,22:
+					p = p & vbcrlf & "public property " & fieldName & " as String"
+				  case 5:
+					p = p & vbcrlf & "public property " & fieldName & " as Date"
+				  case 8,14:
+					' ignore
+				  case 9,12:
+					p = p & vbcrlf & "public property " & fieldName & " as Double"
+				end select
+		end select
+		cs.goNext()
+	  loop while cs.ok
+	end if
+	cs.close()
+	getModelFields = p & vbcrlf & l & vbcrlf & s & vbcrlf & d
+end function
+]]></Code>
+		</Scripting>
 	</Addon>
-	<Addon name="News Stories Quick List" guid="{CB2894C4-E810-4F74-922C-CD74DBBCD7CB}" type="Add-on">
+	<Addon name="News Stories Page" guid="{51A13278-C95B-41B7-A2FC-0384B8A712D1}" type="Add-on">
 		<Copy></Copy>
 		<CopyText></CopyText>
 		<ActiveXProgramID></ActiveXProgramID>
-		<DotNetClass><![CDATA[Contensive.Addons.aoNewsStorys.aoNewsListClass]]></DotNetClass>
-		<ArgumentList><![CDATA[numberOfStories= 3]]></ArgumentList>
+		<DotNetClass><![CDATA[Contensive.Addons.aoNewsStorys.Views.aoNewsStoryClass]]></DotNetClass>
+		<ArgumentList></ArgumentList>
 		<AsAjax>No</AsAjax>
 		<Filter>No</Filter>
 		<Help></Help>
 		<HelpLink></HelpLink>
-		<Icon Link="" width="0" height="0" sprites="0" />
+		<Icon Link="" width="50" height="50" sprites="0" />
 		<InIframe>No</InIframe>
 		<BlockEditTools>No</BlockEditTools>
 		<FormXML></FormXML>
-		<IncludeAddon name="jQuery Corners" guid="{7EBCAE49-027E-4D7D-A3CA-300D6630012C}"/>
-		<IncludeAddon name="JQuery" guid="{9C882078-0DAC-48E3-AD4B-CF2AA230DF80}"/>
-		<IncludeAddon name="JQuery UI" guid="{840B9AEF-9470-4599-BD47-7EC0C9298614}"/>
 		<IsInline>No</IsInline>
-		<JavascriptOnLoad></JavascriptOnLoad>
-		<JavascriptInHead><![CDATA[$(document).ready(function(){
-    $('.boxTitle').corner('Top','5px');
-    $('.boxFooter').corner('bottom','5px');
-});]]></JavascriptInHead>
-		<JavascriptBodyEnd></JavascriptBodyEnd>
-		<MetaDescription></MetaDescription>
-		<OtherHeadTags></OtherHeadTags>
+		<JavascriptInHead></JavascriptInHead>
+		<javascriptForceHead>No</javascriptForceHead>
+		<JSHeadScriptSrc></JSHeadScriptSrc>
+		<!-- deprecated --><JSBodyScriptSrc></JSBodyScriptSrc>
+		<!-- deprecated --><JavascriptBodyEnd></JavascriptBodyEnd>
+		<!-- deprecated --><JavascriptOnLoad></JavascriptOnLoad>
 		<Content>Yes</Content>
 		<Template>Yes</Template>
 		<Email>No</Email>
@@ -76,18 +142,124 @@
 		<OnBodyStart>No</OnBodyStart>
 		<OnBodyEnd>No</OnBodyEnd>
 		<RemoteMethod>No</RemoteMethod>
+		<Diagnostic>No</Diagnostic>
+		<Diagnostic>No</Diagnostic>
 		<ProcessRunOnce>No</ProcessRunOnce>
 		<ProcessInterval>0</ProcessInterval>
+		<MetaDescription></MetaDescription>
+		<OtherHeadTags></OtherHeadTags>
+		<PageTitle></PageTitle>
+		<RemoteAssetLink></RemoteAssetLink>
+		<Styles><![CDATA[.oneArticle a {
+    color: #00a0d2;
+}]]></Styles>
+		<styleslinkhref></styleslinkhref>
+		<Scripting Language="VBScript" EntryPoint="" Timeout="5000"/>
+	</Addon>
+	<Addon name="News Stories Quick List" guid="{CB2894C4-E810-4F74-922C-CD74DBBCD7CB}" type="Add-on">
+		<Copy></Copy>
+		<CopyText></CopyText>
+		<ActiveXProgramID></ActiveXProgramID>
+		<DotNetClass><![CDATA[Contensive.Addons.aoNewsStories.Views.aoNewsListClass]]></DotNetClass>
+		<ArgumentList><![CDATA[numberOfStories= 3]]></ArgumentList>
+		<AsAjax>No</AsAjax>
+		<Filter>No</Filter>
+		<Help></Help>
+		<HelpLink></HelpLink>
+		<Icon Link="" width="50" height="50" sprites="0" />
+		<InIframe>No</InIframe>
+		<BlockEditTools>No</BlockEditTools>
+		<FormXML></FormXML>
+		<IncludeAddon name="jQuery Corners" guid="{7EBCAE49-027E-4D7D-A3CA-300D6630012C}"/>
+		<IncludeAddon name="JQuery" guid="{9C882078-0DAC-48E3-AD4B-CF2AA230DF80}"/>
+		<IncludeAddon name="JQuery UI" guid="{840B9AEF-9470-4599-BD47-7EC0C9298614}"/>
+		<IsInline>No</IsInline>
+		<JavascriptInHead><![CDATA[$(document).ready(function(){
+    $('.boxTitle').corner('Top','5px');
+    $('.boxFooter').corner('bottom','5px');
+});]]></JavascriptInHead>
+		<javascriptForceHead>No</javascriptForceHead>
+		<JSHeadScriptSrc></JSHeadScriptSrc>
+		<!-- deprecated --><JSBodyScriptSrc></JSBodyScriptSrc>
+		<!-- deprecated --><JavascriptBodyEnd></JavascriptBodyEnd>
+		<!-- deprecated --><JavascriptOnLoad></JavascriptOnLoad>
+		<Content>Yes</Content>
+		<Template>Yes</Template>
+		<Email>No</Email>
+		<Admin>No</Admin>
+		<OnPageEndEvent>No</OnPageEndEvent>
+		<OnPageStartEvent>No</OnPageStartEvent>
+		<OnBodyStart>No</OnBodyStart>
+		<OnBodyEnd>No</OnBodyEnd>
+		<RemoteMethod>No</RemoteMethod>
+		<Diagnostic>No</Diagnostic>
+		<Diagnostic>No</Diagnostic>
+		<ProcessRunOnce>No</ProcessRunOnce>
+		<ProcessInterval>0</ProcessInterval>
+		<MetaDescription></MetaDescription>
+		<OtherHeadTags></OtherHeadTags>
 		<PageTitle></PageTitle>
 		<RemoteAssetLink></RemoteAssetLink>
 		<Styles></Styles>
+		<styleslinkhref></styleslinkhref>
+		<Scripting Language="VBScript" EntryPoint="" Timeout="5000"/>
+	</Addon>
+	<Addon name="news story theme" guid="{0e942f75-0095-494d-8de5-d787f89386a9}" type="Add-on">
+		<Copy></Copy>
+		<CopyText></CopyText>
+		<ActiveXProgramID></ActiveXProgramID>
+		<DotNetClass></DotNetClass>
+		<ArgumentList></ArgumentList>
+		<AsAjax>No</AsAjax>
+		<Filter>No</Filter>
+		<Help></Help>
+		<HelpLink></HelpLink>
+		<Icon Link="" width="50" height="50" sprites="0" />
+		<InIframe>No</InIframe>
+		<BlockEditTools>Yes</BlockEditTools>
+		<FormXML></FormXML>
+		<IsInline>No</IsInline>
+		<JavascriptInHead></JavascriptInHead>
+		<javascriptForceHead>No</javascriptForceHead>
+		<JSHeadScriptSrc></JSHeadScriptSrc>
+		<!-- deprecated --><JSBodyScriptSrc></JSBodyScriptSrc>
+		<!-- deprecated --><JavascriptBodyEnd></JavascriptBodyEnd>
+		<!-- deprecated --><JavascriptOnLoad></JavascriptOnLoad>
+		<Content>No</Content>
+		<Template>No</Template>
+		<Email>No</Email>
+		<Admin>No</Admin>
+		<OnPageEndEvent>No</OnPageEndEvent>
+		<OnPageStartEvent>No</OnPageStartEvent>
+		<OnBodyStart>No</OnBodyStart>
+		<OnBodyEnd>No</OnBodyEnd>
+		<RemoteMethod>No</RemoteMethod>
+		<Diagnostic>No</Diagnostic>
+		<Diagnostic>No</Diagnostic>
+		<ProcessRunOnce>No</ProcessRunOnce>
+		<ProcessInterval>0</ProcessInterval>
+		<MetaDescription></MetaDescription>
+		<OtherHeadTags></OtherHeadTags>
+		<PageTitle></PageTitle>
+		<RemoteAssetLink></RemoteAssetLink>
+		<Styles><![CDATA[.art-cal{
+border: 2px solid #5500ff;
+}
+.art-mo{
+border-bottom:2px solid #5500ff;
+background:#5500ff;
+}
+.oneArticle {
+    display: table;
+    width: 100%;
+}]]></Styles>
+		<styleslinkhref></styleslinkhref>
 		<Scripting Language="" EntryPoint="" Timeout="5000"/>
 	</Addon>
 	<data>
 		<record content="layouts" guid="{7BA7A2EF-8BB6-413E-A283-50CB01DE708C}" name="aoNews Story Home Page News List">
-			<field name="ACTIVE">True</field>
-			<field name="SORTORDER"></field>
-			<field name="Layout"><![CDATA[<div>
+			<field name="active">True</field>
+			<field name="layout"><![CDATA[<div>
  <ul class="latestNewsUL">
                     <li>
                         <div class="oneArticle">
@@ -104,12 +276,12 @@
         
         </div>
 ]]></field>
-			<field name="StylesFilename"></field>
+			<field name="sortorder"></field>
+			<field name="stylesfilename"></field>
 		</record>
 		<record content="layouts" guid="{E6892DC8-4218-467E-BBA9-F0329FE41748}" name="aoNewsStory news story Page News Story List">
-			<field name="ACTIVE">True</field>
-			<field name="SORTORDER"></field>
-			<field name="Layout"><![CDATA[<div class="oneArticle">         
+			<field name="active">True</field>
+			<field name="layout"><![CDATA[<div class="oneArticle">         
 	<ul  class="latestNewsUL1" >
 		<li Id="newsArticle" class="latestNewsUL" >
 			<div class="news-date" id="ndate">May 29, 2015</div>
@@ -124,35 +296,36 @@
 		</li>
 	</ul>
 </div>]]></field>
-			<field name="StylesFilename"></field>
+			<field name="sortorder"></field>
+			<field name="stylesfilename"></field>
 		</record>
 	</data>
-	<CDef Name="Story List" Active="1" AdminOnly="0" AllowAdd="1" AllowCalendarEvents="0" AllowContentChildTool="0" AllowContentTracking="0" AllowDelete="1" AllowMetaContent="0" AllowTopicRules="0" AllowWorkflowAuthoring="0" AuthoringDataSourceName="Default" AuthoringTableName="storylist" ContentDataSourceName="Default" ContentTableName="storylist" DefaultSortMethod="By Name" DeveloperOnly="0" DropDownFieldList="Name" EditorGroupName="" Parent="" IconLink="" IconHeight="0" IconWidth="0" IconSprites="0" isbasecontent="0" guid="{54CB4B51-D245-4679-8E62-930B037E1891}" >
-		<Field Name="Name" active="True" AdminOnly="False" Authorable="True" Caption="Header" DeveloperOnly="False" EditSortPriority="110" FieldType="Text" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="0" RedirectID="0" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroupID="0" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" editorAddonId="" >
-			<HelpDefault>Story Header</HelpDefault>
+	<CDef Name="Story List" Active="1" AdminOnly="0" AllowAdd="1" AllowCalendarEvents="0" AllowContentChildTool="0" AllowContentTracking="0" AllowDelete="1" AllowMetaContent="" AllowTopicRules="0" AllowWorkflowAuthoring="0" AuthoringDataSourceName="Default" AuthoringTableName="storylist" ContentDataSourceName="Default" ContentTableName="storylist" DefaultSortMethod="By Name" DeveloperOnly="0" DropDownFieldList="Name" EditorGroupName="" Parent="" IconLink="" IconHeight="0" IconWidth="0" IconSprites="0" isbasecontent="0" guid="{54CB4B51-D245-4679-8E62-930B037E1891}" >
+		<Field Name="name" active="True" AdminOnly="False" Authorable="True" Caption="Header" DeveloperOnly="False" EditSortPriority="110" FieldType="Text" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="0" RedirectID="0" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroup="" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" >
+			<HelpDefault><![CDATA[Story Header]]></HelpDefault>
 		</Field>
-		<Field Name="Active" active="True" AdminOnly="False" Authorable="True" Caption="Active" DeveloperOnly="False" EditSortPriority="9999" FieldType="Boolean" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="0" RedirectID="0" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="1" RSSTitle="False" RSSDescription="False" MemberSelectGroupID="0" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" editorAddonId="" ></Field>
-		<Field Name="SortOrder" active="True" AdminOnly="False" Authorable="False" Caption="Alpha Sort Order" DeveloperOnly="False" EditSortPriority="2000" FieldType="Text" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="0" RedirectID="0" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroupID="0" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" editorAddonId="" ></Field>
-		<Field Name="brief" active="True" AdminOnly="False" Authorable="True" Caption="Story Brief" DeveloperOnly="False" EditSortPriority="120" FieldType="LongText" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroupID="0" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" editorAddonId="" >
-			<HelpDefault>Brief Recap Of the story</HelpDefault>
+		<Field Name="active" active="True" AdminOnly="False" Authorable="True" Caption="Active" DeveloperOnly="False" EditSortPriority="9999" FieldType="Boolean" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="0" RedirectID="0" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="1" RSSTitle="False" RSSDescription="False" MemberSelectGroup="" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" ></Field>
+		<Field Name="sortorder" active="True" AdminOnly="False" Authorable="False" Caption="Alpha Sort Order" DeveloperOnly="False" EditSortPriority="2000" FieldType="Text" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="0" RedirectID="0" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroup="" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" ></Field>
+		<Field Name="brief" active="True" AdminOnly="False" Authorable="True" Caption="Story Brief" DeveloperOnly="False" EditSortPriority="120" FieldType="LongText" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroup="" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" >
+			<HelpDefault><![CDATA[Brief Recap Of the story]]></HelpDefault>
 		</Field>
-		<Field Name="link" active="True" AdminOnly="False" Authorable="True" Caption="Story Link" DeveloperOnly="False" EditSortPriority="130" FieldType="Link" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroupID="0" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" editorAddonId="" >
-			<HelpDefault>Add the URL to the Story</HelpDefault>
+		<Field Name="link" active="True" AdminOnly="False" Authorable="True" Caption="Story Link" DeveloperOnly="False" EditSortPriority="130" FieldType="Link" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroup="" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" >
+			<HelpDefault><![CDATA[Add the URL to the Story]]></HelpDefault>
 		</Field>
-		<Field Name="header" active="True" AdminOnly="False" Authorable="False" Caption="Header" DeveloperOnly="False" EditSortPriority="150" FieldType="Text" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroupID="0" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" editorAddonId="" ></Field>
-		<Field Name="imageFilename" active="True" AdminOnly="False" Authorable="True" Caption="Image" DeveloperOnly="False" EditSortPriority="140" FieldType="Image" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroupID="0" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" editorAddonId="" >
-			<HelpDefault>Include an Image</HelpDefault>
+		<Field Name="header" active="True" AdminOnly="False" Authorable="False" Caption="Header" DeveloperOnly="False" EditSortPriority="150" FieldType="Text" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroup="" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" ></Field>
+		<Field Name="imagefilename" active="True" AdminOnly="False" Authorable="True" Caption="Image" DeveloperOnly="False" EditSortPriority="140" FieldType="Image" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroup="" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" >
+			<HelpDefault><![CDATA[Include an Image]]></HelpDefault>
 		</Field>
-		<Field Name="storydate" active="True" AdminOnly="False" Authorable="True" Caption="Story Date" DeveloperOnly="False" EditSortPriority="160" FieldType="Date" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroupID="0" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" editorAddonId="" >
-			<HelpDefault>Date of the story</HelpDefault>
+		<Field Name="storydate" active="True" AdminOnly="False" Authorable="True" Caption="Story Date" DeveloperOnly="False" EditSortPriority="160" FieldType="Date" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroup="" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" >
+			<HelpDefault><![CDATA[Date of the story]]></HelpDefault>
 		</Field>
-		<Field Name="download" active="True" AdminOnly="False" Authorable="True" Caption="Story Download" DeveloperOnly="False" EditSortPriority="150" FieldType="File" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroupID="0" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" editorAddonId="" >
-			<HelpDefault>Allows the user to download a pdf or other similar file</HelpDefault>
+		<Field Name="download" active="True" AdminOnly="False" Authorable="True" Caption="Story Download" DeveloperOnly="False" EditSortPriority="150" FieldType="File" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroup="" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" >
+			<HelpDefault><![CDATA[Allows the user to download a pdf or other similar file]]></HelpDefault>
 		</Field>
-		<Field Name="story" active="True" AdminOnly="False" Authorable="True" Caption="Full Story" DeveloperOnly="False" EditSortPriority="170" FieldType="HTML" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroupID="0" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" editorAddonId="" >
-			<HelpDefault>The full story article can be placed here</HelpDefault>
+		<Field Name="story" active="True" AdminOnly="False" Authorable="True" Caption="Full Story" DeveloperOnly="False" EditSortPriority="170" FieldType="HTML" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroup="" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" >
+			<HelpDefault><![CDATA[The full story article can be placed here]]></HelpDefault>
 		</Field>
 	</CDef>
-	<Resource name="aonewsstories.dll" type="executable" path="" />
+	<Resource name="aoNewsStories.dll" type="executable" path="" />
 	<Resource name="cpbase.dll" type="executable" path="" />
 </Collection>
