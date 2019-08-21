@@ -8,10 +8,8 @@
 						<div class="art-mo">{{month}}</div>
 						<div class="art-da">{{day}}</div>
 					</div>
-				</div>
-					
-				<p style=""padding-left:10px;"">{{title}}</p>
-					
+				</div>					
+				<p style="padding-left:10px;">{{title}}</p>					
 			</div>
 		</li>
 		{{^newsList}}

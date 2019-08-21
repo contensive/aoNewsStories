@@ -10,3 +10,4 @@ C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\Contens
 C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\aoNewsStories\bin\Debug\Nustache.Core.dll
 C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.vbproj.CopyComplete
 C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\aoNewsStories\bin\Debug\CPBase.dll
+C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.vbprojAssemblyReference.cache
