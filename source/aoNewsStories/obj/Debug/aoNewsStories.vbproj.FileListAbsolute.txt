@@ -1,16 +1,3 @@
-C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\bin\Debug\aoNewsStories.dll
-C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\bin\Debug\aoNewsStories.pdb
-C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\bin\Debug\aoNewsStories.xml
-C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.vbproj.GenerateResource.Cache
-C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.dll
-C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.xml
-C:\Users\kmaAdmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.pdb
-C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.vbproj.CoreCompileInputs.cache
-C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\Contensive.Addons.aoNewsStories.Resources.resources
-C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\aoNewsStories\bin\Debug\Nustache.Core.dll
-C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.vbproj.CopyComplete
-C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\aoNewsStories\bin\Debug\CPBase.dll
-C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\aoNewsStories\obj\Debug\aoNewsStories.vbprojAssemblyReference.cache
 C:\Users\jay\Documents\Git\aoNewsStories\source\aoNewsStories\bin\Debug\aoNewsStories.dll
 C:\Users\jay\Documents\Git\aoNewsStories\source\aoNewsStories\bin\Debug\aoNewsStories.pdb
 C:\Users\jay\Documents\Git\aoNewsStories\source\aoNewsStories\bin\Debug\aoNewsStories.xml

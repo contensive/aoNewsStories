@@ -7,6 +7,9 @@ Namespace Views
         Inherits AddonBaseClass
         '
         '
+        'Contensive.Addons.aoNewsStorys.Views.aoNewsStoryClass
+        'Contensive.Addons.aoNewsStorys.Views.aoNewsStoryClass
+        '
         Public Overrides Function Execute(ByVal CP As CPBaseClass) As Object
             Dim returnHtml As String = ""
             '

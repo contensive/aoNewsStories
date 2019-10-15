@@ -12,6 +12,6 @@
 				<p style="padding-left:10px;">{{title}}</p>					
 			</div>
 		</li>
-		{{^newsList}}
-	</ul>        
+		{{/newsList}}
+	</ul>
 </div>

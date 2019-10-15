@@ -1,0 +1,158 @@
+<!-- main wrapper --><div class="oneWrapper">
+    
+    <!-- header -->
+    <header class="oneHeader">
+    <div class="default-width">
+        <div class="oneHeaderInner">
+            <div class="headerLogo hCol">
+                <div class="headerLogoInner">
+                    <div class="theLogo hCol"><img src="img/The-Transportation-Alliance--Logo_big.png" alt="TLPA"></div>                    <div class="theLogoText hCol">
+          <!--
+                        Taxicab,<br>
+                        Limousine &<br>
+                        Paratransit<br>
+                        Association
+          -->
+                    </div></a><p><a href="#"></a></p><p><a href="#"></a></p><p><a href="#"></a></p><p><a href="#"></a></p><p><a href="#"></a></p><p><a href="#">                    </a>
+                </p></div></div>
+            <div class="headerOptions hCol">
+                 <div class="headerOptionsInner">
+                     <div class="memberOptions hCol">
+                         <!-- header options -->
+                         {%"TLPA Login box"%}
+                         <!-- end header options -->
+                     </div>                     <div class="tlpaSearch hCol">
+                         <div class="tlpaSearchInner">
+                              <form action="/search" method="get" style="display:inline;" >
+                <input name="TextSearchWordList" class="tlpaSearchInput" placeholder="Search" type="search">
+                <button id="js-tlpaSiteSearchBtn" class="tlpaSiteSearchBtn" name="Search"><span class="fa fa-search"></span></button>
+              </form>
+                         </div></div></div></div></div></div></header>
+    <!-- end header -->    
+    <!-- navigation -->    
+<nav class="oneNav">
+    <div class="default-width">
+        <!-- mobile menu -->
+        <label for="show-menu" class="show-menu">
+            <div class="mobileNavIcon">
+                <span class="tlpaNavicon"><span class="fa fa-navicon"></span> <span class="montserrat">Menu</span></span>
+            </div>        </label>
+        <input id="show-menu" class="mobileMenu" role="button" type="checkbox">
+        <!-- end mobile menu -->        <div class="oneNavInner">
+        <div class="mobileBox">
+            <label for="show-menu" class="closeX show-menu"><img src="img/x-close.png" alt="Close"></label>
+            <ul class="oneNavUL">
+                <li class="searchLI">
+                    <!-- site search -->
+                    <div class="tlpaSearch">
+                    <div class="tlpaSearchInner">
+                        <input name="search" class="tlpaSearchInput" placeholder="Search TLPA" type="search">
+                             <button id="js-tlpaSiteSearchBtn2" class="tlpaSiteSearchBtn"><span class="fa fa-search"></span></button>
+                    </div></div>
+                    <!-- end site search --></li>                {% {"addon":{"addon":"menu pages","instanceId":"{d2e1522a-7bb0-4e06-9702-e8200b85c206}"}}%}
+            </ul></div></div></div></nav>
+    <!-- end navigation -->    
+    <!-- slider content --><section class="homeSliderContent">
+        
+    {%"homePageSlider"%}</section>
+    <!-- end slider content -->    
+    <!-- welcome + paths -->    
+<section class="welcomePathsBox">
+    <div class="default-width">
+    {% "HomePageAudienceBoxes" %}
+    </div></section>
+    <!-- end welcome + paths -->    
+    <!-- popular tiles -->    
+<section class="homeTilesBox hBlock">
+    <div class="default-width">
+        <div class="homeTilesBoxInner hBlockInner">
+            <h2>Get Started With TLPA</h2>
+            
+            <div class="homeTilesBox">
+            <!-- 
+            * if only 3 tiles (3 li), add class .only-three to .homeTilesUL
+            -->
+            <ul class="homeTilesUL">
+               {%"Get Started"%}
+            </ul>
+            </div></div></div></section>
+    <!-- end popular tiles -->    
+	
+    <!-- home news -->    
+<section class="homeNews hBlock">
+	<div class="default-width">
+		<div class="homeNewsInner hBlockInner">
+			<!-- latest news -->
+			<div class="tlpaHomeNews cCol">
+				<h2>Latest News</h2>
+				{% {"addon":{"addon":"News Stories Quick List","numberOfStories":"4"}}%}
+				<div class="ctaBox"><a href="https://www.tlpa.org/Press-Releases">More News</a></div>
+			</div>
+			<!-- end latest news -->            
+			<!-- tweet box -->            
+			<div class="tlpaTweetBox cCol">
+				<h2>Tweets</h2>
+				<div class="twitterBox">
+					{% "TLPA 2015 Tweets" %}
+				</div>
+			</div>
+		<!-- end tweet box -->
+		</div>
+	</div>
+</section>
+    <!-- end home news -->    
+{%"HomePageCalltoActionPanels"%}
+   
+    
+    <!-- content member carousel -->    
+<section class="homeContentCarousel">
+    <div class="default-width">
+        <div class="homeContentCarouselInner">
+            <h3>Our Members</h3>
+            <!-- member carousel -->
+           {%"homePageCarousel"%}
+            <!-- end member carousel -->
+        </div></div></section>
+    <!-- end content member carousel -->    
+    <!-- sponsors -->    
+<section class="contentSponsors">
+    <div class="default-width">
+        <div class="contentSponsorsInner">
+             <AC type="AGGREGATEFUNCTION" name="HomePageBannerCampaign" ACInstanceID="{53011ECB-7FD7-4D81-8D13-F5A8F829F9FB}" querystring="Campaign=2&Wrapper=0&As Ajax=0&css Container id=&css Container class=" guid="{DC9E1741-9A98-4562-BD96-E8D33BC48152}">
+        </div></div></section>
+    <!-- end sponsors -->    
+    <!-- subfooter -->    <div class="oneSubFooter">
+    <div class="default-width">
+        <div class="oneSubFooterInner">
+
+            <!-- one col (footer nav) -->
+            <div class="subCol-full oneSubFCol">
+                <h4 class="label-desktop">Site Map</h4>
+                <!-- mobile menu -->
+                <label for="show-menu-f" class="show-menu">
+                    <h4>Site Map <span class="fa fa-caret-right"></span></h4>
+                </label>
+                <input id="show-menu-f" class="mobileMenu-f" role="button" type="checkbox">
+                <!-- end mobile menu -->
+                <div class="siteMapBox">
+                <ul class="siteMapUL subfootUL">
+                   {% {"addon":{"addon":"menu pages","instanceId":"{e1cf9898-fe22-4628-bca4-1d7b0b432825}"}}%}
+                </ul>
+                </div></div>
+            <!-- end one col (footer nav) -->
+            <!-- one col (03) -->            <div class="subCol-03 oneSubFCol">
+                {%"Contact Us"%}
+            </div>            <!-- end one col (03) --></div></div></div>
+    <!-- end subfooter -->    
+    <!-- footer --><footer class="oneFooter">
+        
+<p>Copyright © 2019 The transportation alliance. All Rights Reserved.</p></footer>
+    <!-- end footer -->    
+    <!-- mobile sponsor -->    <!-- ad only displays on phone -->    <div id="js-mobileSponFoot" class="mobileSponFoot">
+        <a href="#" target="_blank"><img src="img/ad-mleaderboard.jpg" alt=""></a>
+    </div>    <!-- end mobile sponsor -->    
+    <!-- back to top -->    <a href="#" class="back-to-top" title="Back to Top">
+      <span class="fa fa-chevron-up"></span>
+    </a>
+    <!-- end back to top --></div>
+<!-- end main wrapper -->

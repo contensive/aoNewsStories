@@ -116,7 +116,7 @@ end function
 		<Copy></Copy>
 		<CopyText></CopyText>
 		<ActiveXProgramID></ActiveXProgramID>
-		<DotNetClass><![CDATA[Contensive.Addons.aoNewsStorys.Views.aoNewsStoryClass]]></DotNetClass>
+		<DotNetClass><![CDATA[Contensive.Addons.aoNewsStories.Views.aoNewsStoryClass]]></DotNetClass>
 		<ArgumentList></ArgumentList>
 		<AsAjax>No</AsAjax>
 		<Filter>No</Filter>
@@ -126,6 +126,7 @@ end function
 		<InIframe>No</InIframe>
 		<BlockEditTools>No</BlockEditTools>
 		<FormXML></FormXML>
+		<IncludeAddon name="news story theme" guid="{0e942f75-0095-494d-8de5-d787f89386a9}"/>
 		<IsInline>No</IsInline>
 		<JavascriptInHead></JavascriptInHead>
 		<javascriptForceHead>No</javascriptForceHead>
@@ -170,6 +171,7 @@ end function
 		<InIframe>No</InIframe>
 		<BlockEditTools>No</BlockEditTools>
 		<FormXML></FormXML>
+		<IncludeAddon name="news story theme" guid="{0e942f75-0095-494d-8de5-d787f89386a9}"/>
 		<IncludeAddon name="jQuery Corners" guid="{7EBCAE49-027E-4D7D-A3CA-300D6630012C}"/>
 		<IncludeAddon name="JQuery" guid="{9C882078-0DAC-48E3-AD4B-CF2AA230DF80}"/>
 		<IncludeAddon name="JQuery UI" guid="{840B9AEF-9470-4599-BD47-7EC0C9298614}"/>
@@ -242,7 +244,8 @@ end function
 		<OtherHeadTags></OtherHeadTags>
 		<PageTitle></PageTitle>
 		<RemoteAssetLink></RemoteAssetLink>
-		<Styles><![CDATA[.art-cal{
+		<Styles><![CDATA[
+.art-cal{
 border: 2px solid #5500ff;
 }
 .art-mo{
@@ -252,7 +255,12 @@ background:#5500ff;
 .oneArticle {
     display: table;
     width: 100%;
-}]]></Styles>
+}
+ul.latestNewsUL1 {
+	list-style-type: none;
+}
+
+]]></Styles>
 		<styleslinkhref></styleslinkhref>
 		<Scripting Language="" EntryPoint="" Timeout="5000"/>
 	</Addon>
@@ -327,5 +335,4 @@ background:#5500ff;
 		</Field>
 	</CDef>
 	<Resource name="aoNewsStories.dll" type="executable" path="" />
-	<Resource name="cpbase.dll" type="executable" path="" />
 </Collection>
