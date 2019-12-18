@@ -27,7 +27,8 @@ Namespace Views
                             viewData.newsList.Add(New NewsViewModel() With {
                                     .day = storyDate.Day,
                                     .month = storyDate.ToString("MMMM"),
-                                    .title = cs.GetText("brief")
+                                    .title = cs.GetText("brief"),
+                                    .link = cs.GetText("link")
                                 })
                             storyCount += 1
                             Call cs.GoNext()
@@ -51,6 +52,7 @@ Namespace Views
         Public month As String
         Public day As String
         Public title As String
+        Public link As String
     End Class
     '
 End Namespace
