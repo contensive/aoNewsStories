@@ -125,11 +125,12 @@ Namespace Views
                                 Dim qs As String
                                 qs = CP.Doc.RefreshQueryString
                                 link = "?" & CP.Utils.ModifyQueryString(qs, "newsStoryId", storyID)
+                                CP.Site.AddLinkAlias(cs.GetText("Name"), CP.Doc.PageId, link)
                                 blockLayout.SetOuter("#articleURL", "<a target=""_blank"" href=""" & link & """>Read More</a>")
 
                             Else
                                 blockLayout.SetInner("#articleURL", "<a target=""_blank"" href=""" & link & """>Read More</a>")
-
+                                CP.Site.AddLinkAlias(cs.GetText("Name"), CP.Doc.PageId, link)
                             End If
                             '
                             tmpHtml &= blockLayout.GetHtml
