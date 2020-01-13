@@ -210,6 +210,10 @@ Namespace Views
                         '
                         blockLayout.Load(layout.GetInner(".latestNewsUL"))
 
+                        If (Not String.IsNullOrEmpty(image)) Then
+                            CP.Doc.SetProperty("Open Graph Image", "http://" & CP.Site.Domain & CP.Site.FilePath & image)
+                        End If
+
                         If image = "" Then
                             blockLayout.SetOuter("#cssThumImg", image)
                         Else
