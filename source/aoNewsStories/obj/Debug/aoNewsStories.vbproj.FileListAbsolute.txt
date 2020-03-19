@@ -22,3 +22,16 @@ C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\source\aoNewsStories\bin\Debug\
 C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\source\aoNewsStories\obj\Debug\aoNewsStories.vbproj.CopyComplete
 C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\source\aoNewsStories\obj\Debug\aoNewsStories.dll
 C:\Users\kmaadmin\Documents\GitHub\aoNewsStories\source\aoNewsStories\obj\Debug\aoNewsStories.pdb
+C:\Git\aoNewsStories\source\aoNewsStories\bin\Debug\aoNewsStories.dll
+C:\Git\aoNewsStories\source\aoNewsStories\bin\Debug\aoNewsStories.pdb
+C:\Git\aoNewsStories\source\aoNewsStories\bin\Debug\aoNewsStories.xml
+C:\Git\aoNewsStories\source\aoNewsStories\bin\Debug\CPBase.dll
+C:\Git\aoNewsStories\source\aoNewsStories\bin\Debug\Nustache.Core.dll
+C:\Git\aoNewsStories\source\aoNewsStories\obj\Debug\aoNewsStories.vbprojAssemblyReference.cache
+C:\Git\aoNewsStories\source\aoNewsStories\obj\Debug\Contensive.Addons.aoNewsStories.Resources.resources
+C:\Git\aoNewsStories\source\aoNewsStories\obj\Debug\aoNewsStories.vbproj.GenerateResource.cache
+C:\Git\aoNewsStories\source\aoNewsStories\obj\Debug\aoNewsStories.vbproj.CoreCompileInputs.cache
+C:\Git\aoNewsStories\source\aoNewsStories\obj\Debug\aoNewsStories.vbproj.CopyComplete
+C:\Git\aoNewsStories\source\aoNewsStories\obj\Debug\aoNewsStories.dll
+C:\Git\aoNewsStories\source\aoNewsStories\obj\Debug\aoNewsStories.xml
+C:\Git\aoNewsStories\source\aoNewsStories\obj\Debug\aoNewsStories.pdb
