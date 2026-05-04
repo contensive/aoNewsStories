@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="windows-1252"?>
-<Collection name="News Stories" guid="{d3aae9c9-cfbb-493d-8ab9-75c07ab306c2}" system="No" updatable="No" blockNavigatorNode="No" onInstallAddonGuid="">
+<Collection name="News Stories" guid="{d3aae9c9-cfbb-493d-8ab9-75c07ab306c2}" system="No" updatable="No" blockNavigatorNode="No" onInstallAddonGuid=""
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="https://contensive.s3.amazonaws.com/xsd/Collection.xsd"
+>
 	<HelpLink>http://wiki.kmacloud.net/index.php?title=News_Stories</HelpLink>
 	<Help></Help>
 	<Addon name="model data" guid="{5db4d199-f2ce-4259-b8ec-33007e72ee33}" type="Add-on">

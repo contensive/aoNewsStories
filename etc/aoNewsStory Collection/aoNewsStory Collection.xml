@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="windows-1252"?>
-<Collection name="aoNewsStory Collection" guid="{D3AAE9C9-CFBB-493D-8AB9-75C07AB306C2}" system="No" updatable="Yes" blockNavigatorNode="No">
+<Collection name="aoNewsStory Collection" guid="{D3AAE9C9-CFBB-493D-8AB9-75C07AB306C2}" system="No" updatable="Yes" blockNavigatorNode="No"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="https://contensive.s3.amazonaws.com/xsd/Collection.xsd"
+>
 	<HelpLink></HelpLink>
 	<Help></Help>
 	<Addon name="News Story Page List addon" guid="{51A13278-C95B-41B7-A2FC-0384B8A712D1}" type="Add-on">
