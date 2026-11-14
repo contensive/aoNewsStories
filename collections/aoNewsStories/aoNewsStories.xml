@@ -8,7 +8,6 @@
 	<Addon name="model data" guid="{5db4d199-f2ce-4259-b8ec-33007e72ee33}" type="Add-on">
 		<Copy></Copy>
 		<CopyText></CopyText>
-		<ActiveXProgramID></ActiveXProgramID>
 		<DotNetClass></DotNetClass>
 		<ArgumentList></ArgumentList>
 		<AsAjax>No</AsAjax>
@@ -118,7 +117,6 @@ end function
 	<Addon name="News Stories Page" guid="{51A13278-C95B-41B7-A2FC-0384B8A712D1}" type="Add-on">
 		<Copy></Copy>
 		<CopyText></CopyText>
-		<ActiveXProgramID></ActiveXProgramID>
 		<DotNetClass><![CDATA[Contensive.Addons.aoNewsStories.Views.aoNewsStoryClass]]></DotNetClass>
 		<ArgumentList></ArgumentList>
 		<AsAjax>No</AsAjax>
@@ -163,7 +161,6 @@ end function
 	<Addon name="News Stories Quick List" guid="{CB2894C4-E810-4F74-922C-CD74DBBCD7CB}" type="Add-on">
 		<Copy></Copy>
 		<CopyText></CopyText>
-		<ActiveXProgramID></ActiveXProgramID>
 		<DotNetClass><![CDATA[Contensive.Addons.aoNewsStories.Views.aoNewsListClass]]></DotNetClass>
 		<ArgumentList><![CDATA[numberOfStories= 3]]></ArgumentList>
 		<AsAjax>No</AsAjax>
@@ -212,7 +209,6 @@ end function
 	<Addon name="news story theme" guid="{0e942f75-0095-494d-8de5-d787f89386a9}" type="Add-on">
 		<Copy></Copy>
 		<CopyText></CopyText>
-		<ActiveXProgramID></ActiveXProgramID>
 		<DotNetClass></DotNetClass>
 		<ArgumentList></ArgumentList>
 		<AsAjax>No</AsAjax>

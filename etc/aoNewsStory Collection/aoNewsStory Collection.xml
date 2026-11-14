@@ -8,7 +8,6 @@
 	<Addon name="News Story Page List addon" guid="{51A13278-C95B-41B7-A2FC-0384B8A712D1}" type="Add-on">
 		<Copy></Copy>
 		<CopyText></CopyText>
-		<ActiveXProgramID></ActiveXProgramID>
 		<DotNetClass><![CDATA[Contensive.Addons.aoNewsStorys.aoNewsStoryClass]]></DotNetClass>
 		<ArgumentList></ArgumentList>
 		<AsAjax>No</AsAjax>
@@ -44,7 +43,6 @@
 	<Addon name="NewsStory Collection home page News List" guid="{CB2894C4-E810-4F74-922C-CD74DBBCD7CB}" type="Add-on">
 		<Copy></Copy>
 		<CopyText></CopyText>
-		<ActiveXProgramID></ActiveXProgramID>
 		<DotNetClass><![CDATA[Contensive.Addons.aoNewsStorys.aoNewsListClass]]></DotNetClass>
 		<ArgumentList><![CDATA[numberOfStories= 3]]></ArgumentList>
 		<AsAjax>No</AsAjax>
